@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.louhwz.sbdata.repository.SbdataDao">
+    <resultMap id="Sbdata-result" type="com.louhwz.sbdata.utils.Sbdata">
+        <result property="name" column="Name" />
+        <result property="description" column="Description" />
+        <result property="number" column="Number" />
+        <result property="days" column="Days" />
+    </resultMap>
+
+    <select id="getDataById" resultMap="Sbdata-result">
+        SELECT Name,Description,Number,Days
+        FROM T_Customers
+        where ID=#{id}
+    </select>
+</mapper>

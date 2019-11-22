@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.louhwz.register.repository.UserDao">
+
+    <!--还不清楚<sql></sql>什么意思-->
+    <sql id="Base_Column_list">
+        user_id, user_name, user_role_names, user_account, user_password
+    </sql>
+
+    <resultMap id="userEntity" type="com.louhwz.register.entity.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="user_role_name" jdbcType="VARCHAR" property="roleName"/>
+        <result column="user_account" jdbcType="VARCHAR" property="account"/>
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    </resultMap>
+
+    <!--也是测试，猜想这里的select是对    -->
+    <!--返回resultType一般是基本数据类型，resultMap一般是自定义类-->
+    <select id="selectByUserName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select  count(*)
+        from ida_user
+        where user_name= #{userName,jdbcType=VARCHAR}
+    </select>
+
+    <!--useGeneratedKeys设置true表示在数据库执行添加记录之后可以获取到自动生成的主键ID -->
+    <insert id="insertUser" parameterType="com.louhwz.register.entity.User" useGeneratedKeys="true">
+        insert into ida_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName != null">user_name,</if>
+            <if test="userPassword != null">user_password,</if>
+            <if test="roleName != null">user_role_names,</if>
+            <if test="account != null">user_account,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">#{userName,jdbcType=VARCHAR},</if>
+            <if test="userPassword != null">#{userPassword,jdbcType=VARCHAR},</if>
+            <if test="roleName != null">#{roleName,jdbcType=VARCHAR},</if>
+            <if test="account != null">#{account,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+
+</mapper>
