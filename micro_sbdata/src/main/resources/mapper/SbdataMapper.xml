@@ -8,9 +8,31 @@
         <result property="days" column="Days" />
     </resultMap>
 
+    <resultMap id="HotelData" type="com.louhwz.sbdata.utils.HotelData">
+        <result property="id" column="ID" />
+        <result property="houseType" column="Name" />
+        <result property="floor" column="FloorNumber" />
+        <result property="no" column="No" />
+        <result property="price" column="Price" />
+        <result property="area" column="Area" />
+        <result property="face" column="Face" />
+        <result property="totalSell" column="TotalSell" />
+        <result property="ageing" column="Ageing" />
+    </resultMap>
+
     <select id="getDataById" resultMap="Sbdata-result">
         SELECT Name,Description,Number,Days
         FROM T_Customers
         where ID=#{id}
+    </select>
+
+    <select id="getHotelInfo" resultMap="HotelData" parameterType="Integer">
+        SELECT a.ID, Name, FloorNumber, No, Price, a.Area, Face, TotalSell, Ageing
+        FROM I_ROOMS a
+        LEFT JOIN T_Rooms b
+        ON a.RoomId = b.ID
+        LEFT JOIN I_RoomPricing c
+        ON c.GroupId = 42 and a.RoomId = c.RoomType
+        WHERE a.GroupId = #{groupId} and Price is not NULL
     </select>
 </mapper>

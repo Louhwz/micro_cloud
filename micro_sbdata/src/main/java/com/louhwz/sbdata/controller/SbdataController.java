@@ -2,11 +2,14 @@ package com.louhwz.sbdata.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.louhwz.sbdata.service.SbdataService;
+import com.louhwz.sbdata.utils.HotelData;
 import com.louhwz.sbdata.utils.Response;
 import com.louhwz.sbdata.utils.Sbdata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
 200 OK 服务器返回用户请求的数据，该操作是幂等的
@@ -49,5 +52,13 @@ public class SbdataController {
         System.out.println("jsonObject"+jsonObject);
         Response rs = sbdataService.getData(caseId);
         return rs.getData();
+    }
+
+    @PostMapping("/hoteldata")
+    public List<HotelData> getHotelData(@RequestBody JSONObject jsonObject){
+        Integer groupId = jsonObject.getInteger("groupId");
+        List<HotelData> hotelInfo = sbdataService.getHotelInfo(groupId);
+        System.out.println(hotelInfo.get(0));
+        return hotelInfo;
     }
 }
