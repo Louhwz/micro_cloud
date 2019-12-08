@@ -8,9 +8,9 @@ services:
     hostname: docker-compose-sandbox
     container_name: docker-compose-sandbox
     networks:
-      - cloud
+      - spring-cloud-cli_cloud
     ports:
       - "10021:10021"
 networks:
-  cloud:
+  spring-cloud-cli_cloud:
     external: true
