@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mic-sandbox:
+    build:
+      context: ./micro_sbdata
+      dockerfile: Dockerfile
+    restart: on-failure
+    hostname: docker-compose-sandbox
+    container_name: docker-compose-sandbox
+    networks:
+      - cloud
+    ports:
+      - "10021:10021"
+networks:
+  cloud:
+    external: true

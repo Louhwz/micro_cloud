@@ -9,6 +9,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/mic_casecloud/pom.xml" />
         <option value="$PROJECT_DIR$/mic_login/pom.xml" />
       </set>
     </option>

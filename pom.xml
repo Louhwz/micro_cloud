@@ -19,7 +19,6 @@
     <modules>
         <module>micro_register</module>
         <module>micro_test</module>
-        <module>mic_casecloud</module>
         <module>micro_sbdata</module>
     </modules>
 
