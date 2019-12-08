@@ -7,6 +7,7 @@ import com.louhwz.sbdata.utils.Response;
 import com.louhwz.sbdata.utils.Sbdata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,10 @@ public class SbdataController {
     @Autowired
     SbdataService sbdataService;
 
+    @PostMapping("/testsend")
+    public JSONObject testsend(@RequestBody JSONObject jsonObject){
+        return jsonObject;
+    }
 
     @GetMapping("/test")
     public String test(){
