@@ -1,7 +1,7 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://docker-compose-eureka:8761/eureka
   instance:
     prefer-ip-address: true
 
@@ -10,10 +10,10 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cn_fsthmst?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-    username: root
-    password: Aa112211!
+    url: jdbc:sqlserver://47.103.13.21;DatabaseName=CN_HMST_TEST
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: chenniao
   application:
     name: micro_sbdata
 
