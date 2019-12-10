@@ -1,5 +1,6 @@
 package com.louhwz.sbdata.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.louhwz.sbdata.service.SbdataService;
 import com.louhwz.sbdata.utils.HotelData;
@@ -65,5 +66,12 @@ public class SbdataController {
         List<HotelData> hotelInfo = sbdataService.getHotelInfo(groupId);
         System.out.println(hotelInfo.get(0));
         return hotelInfo;
+    }
+
+    @PostMapping("/order")
+    public JSONArray receiveOrderFromVue(@RequestBody JSONObject jsonObject){
+        System.out.println(jsonObject.getJSONArray("id"));
+        JSONArray array = jsonObject.getJSONArray("id");
+        return array;
     }
 }

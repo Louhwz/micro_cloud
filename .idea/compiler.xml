@@ -7,9 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="micro_test" />
-        <module name="micro_register" />
         <module name="micro_sbdata" />
+        <module name="micro_register" />
+        <module name="micro_test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
