@@ -1,0 +1,15 @@
+server:
+  port: 9091
+
+uploadpic:
+  path: F:\IdeaProjects\LoadPic\
+spring:
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: file:${uploadpic.path}
+  http:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+

@@ -70,7 +70,6 @@ public class SbdataController {
 
     @PostMapping("/order")
     public Integer[] receiveOrderFromVue(@RequestBody List<JSONObject> jsonObject){
-        System.out.println(jsonObject.get(0));
         Integer[] array = new Integer[jsonObject.size()];
         for(int i=0;i<jsonObject.size();i++) {
             Integer addIn = jsonObject.get(i).getInteger("id");

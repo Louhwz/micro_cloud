@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="micro_sbdata" />
         <module name="micro_register" />
+        <module name="micro_python" />
         <module name="micro_test" />
       </profile>
     </annotationProcessing>
