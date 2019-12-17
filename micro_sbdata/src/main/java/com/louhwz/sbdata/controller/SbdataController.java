@@ -3,6 +3,7 @@ package com.louhwz.sbdata.controller;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.louhwz.sbdata.service.SbdataService;
+import com.louhwz.sbdata.utils.Case;
 import com.louhwz.sbdata.utils.HotelData;
 import com.louhwz.sbdata.utils.Response;
 import com.louhwz.sbdata.utils.Sbdata;
@@ -11,7 +12,12 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static org.apache.http.client.methods.RequestBuilder.put;
 
 /**
 200 OK 服务器返回用户请求的数据，该操作是幂等的
@@ -77,5 +83,23 @@ public class SbdataController {
             array[i] = addIn;
         }
         return array;
+    }
+
+    @GetMapping("/caseshow")
+    public List<Case> getCase(){
+        List<Case>  res = sbdataService.getCaseInfo();
+        //List<Map<Integer, Integer>> maxRound = sbdataService.getMaxRound();
+        int maxRound[] = {6,6,6};
+
+        for (Case re : res) {
+            int nowCaseId = re.getCaseId();
+            if (re.getCurrentRound() > maxRound[nowCaseId]) {
+                re.setIfFinished(true);
+            }
+        }
+
+        System.out.println(res.get(0));
+
+        return res;
     }
 }

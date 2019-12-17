@@ -20,6 +20,15 @@
         <result property="ageing" column="Ageing" />
     </resultMap>
 
+    <resultMap id="Case" type="com.louhwz.sbdata.utils.Case">
+        <result property="id" column="ID" />
+        <result property="name" column="Name" />
+        <result property="description" column="Description" />
+        <result property="caseId" column="CaseId" />
+        <result property="createTime" column="CreateAt" />
+        <result property="currentRound" column="CurrentRound" />
+    </resultMap>
+
     <select id="getDataById" resultMap="Sbdata-result">
         SELECT Name,Description,Number,Days
         FROM T_Customers
@@ -34,5 +43,10 @@
         LEFT JOIN I_RoomPricing c
         ON c.GroupId = 42 and a.RoomId = c.RoomType
         WHERE a.GroupId = #{groupId} and Price is not NULL
+    </select>
+
+    <select id="getCaseInfo" resultMap="Case">
+        SELECT ID,Name,Description,CaseId,CreateAt,CurrentRound
+        FROM I_Experiments
     </select>
 </mapper>
