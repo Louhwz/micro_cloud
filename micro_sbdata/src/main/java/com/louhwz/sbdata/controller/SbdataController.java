@@ -7,6 +7,7 @@ import com.louhwz.sbdata.utils.Case;
 import com.louhwz.sbdata.utils.HotelData;
 import com.louhwz.sbdata.utils.Response;
 import com.louhwz.sbdata.utils.Sbdata;
+import com.teradata.common.bean.ResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
@@ -64,6 +65,12 @@ public class SbdataController {
         System.out.println("jsonObject"+jsonObject);
         Response rs = sbdataService.getData(caseId);
         return rs.getData();
+    }
+
+    @GetMapping("/neworder")
+    public ResponseBean newOrder(String groupId){
+        System.out.println(groupId);
+        return new ResponseBean(200,"success",groupId);
     }
 
 

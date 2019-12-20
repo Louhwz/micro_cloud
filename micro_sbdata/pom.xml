@@ -75,6 +75,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.teradata</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
