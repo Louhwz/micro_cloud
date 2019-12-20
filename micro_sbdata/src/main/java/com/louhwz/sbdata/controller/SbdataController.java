@@ -66,6 +66,7 @@ public class SbdataController {
         return rs.getData();
     }
 
+
     @PostMapping("/hoteldata")
     public List<HotelData> getHotelData(@RequestBody JSONObject jsonObject){
         Integer groupId = jsonObject.getInteger("groupId");
@@ -102,4 +103,6 @@ public class SbdataController {
 
         return res;
     }
+
+
 }
