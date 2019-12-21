@@ -106,6 +106,7 @@ public class SbdataController {
     @GetMapping("/isready")
     public ResponseBean isReady(String groupId){
         boolean isReady = sbdataService.isReady(groupId);
+        isReady = false;
         if(isReady){
 
             return new ResponseBean(200,"success","");
