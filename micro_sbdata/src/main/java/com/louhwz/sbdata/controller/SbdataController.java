@@ -39,17 +39,102 @@ public class SbdataController {
     @Autowired
     SbdataService sbdataService;
 
-    @PostMapping("/testsend")
-    public JSONObject testsend(@RequestBody JSONObject jsonObject){
-        return jsonObject;
-    }
-
+    /**
+     * 测试用
+     * @return
+     */
     @GetMapping("/test")
     public String test(){
         return "测试成功！";
     }
 
+    /**
+     * 与前端交互
+     * @return  所有可以增改的case TODO 增加用户需要改进修改的case
+     */
+    @GetMapping("/caseshow")
+    public ResponseBean getCase(){
+        List<Case>  res = sbdataService.getCaseInfo();
+        //List<Map<Integer, Integer>> maxRound = sbdataService.getMaxRound();
+        int maxRound[] = {6,6,6};
 
+        for (Case re : res) {
+            int nowCaseId = re.getCaseId();
+            if (re.getCurrentRound() > maxRound[nowCaseId]) {
+                re.setIfFinished(true);
+            }
+        }
+        return new ResponseBean(200,"success",res);
+    }
+
+    /**
+     * 与前端交互，
+     * @param jsonObject
+     * @return 特定groupId的房间情况，供前端用户增改
+     */
+    @PostMapping("/hoteldata")
+    public ResponseBean getHotelData(@RequestBody JSONObject jsonObject){
+        Integer groupId = jsonObject.getInteger("groupId");
+        List<HotelData> hotelInfo = sbdataService.getHotelInfo(groupId);
+
+        return new ResponseBean(200,"success",hotelInfo);
+
+    }
+
+    /**
+     * 与前端交互
+     * @param jsonObject
+     * @return 用户对某一张表的修改结果
+     */
+    @PostMapping("/order")
+    public ResponseBean receiveOrderFromVue(@RequestBody List<JSONObject> jsonObject){
+        Integer[] array = new Integer[jsonObject.size()];
+        for(int i=0;i<jsonObject.size();i++) {
+            Integer addIn = jsonObject.get(i).getInteger("id");
+
+            array[i] = addIn;
+        }
+        return new ResponseBean(200,"success",array);
+    }
+
+
+    /**
+     * 与沙盘后端交互
+     * @param groupId
+     * @return
+     */
+    @GetMapping("/isready")
+    public ResponseBean isReady(String groupId){
+        boolean isReady = sbdataService.isReady(groupId);
+        if(isReady){
+
+            return new ResponseBean(200,"success","");
+        }
+        else{
+            return new ResponseBean(204,"Not Ready","");
+        }
+
+    }
+
+    /**
+     * 与沙盘后端交互
+     * @param groupId
+     * @return
+     */
+    @GetMapping("/neworder")
+    public ResponseBean newOrder(String groupId){
+        System.out.println(groupId);
+        return new ResponseBean(200,"success",groupId);
+    }
+
+
+
+
+
+
+
+
+    /*
     @PostMapping("/gsd")
     @ResponseBody
     public Response gsd(@RequestBody JSONObject jsonObject) {
@@ -66,50 +151,7 @@ public class SbdataController {
         Response rs = sbdataService.getData(caseId);
         return rs.getData();
     }
-
-    @GetMapping("/neworder")
-    public ResponseBean newOrder(String groupId){
-        System.out.println(groupId);
-        return new ResponseBean(200,"success",groupId);
-    }
-
-
-    @PostMapping("/hoteldata")
-    public List<HotelData> getHotelData(@RequestBody JSONObject jsonObject){
-        Integer groupId = jsonObject.getInteger("groupId");
-        List<HotelData> hotelInfo = sbdataService.getHotelInfo(groupId);
-        System.out.println(hotelInfo.get(0));
-        return hotelInfo;
-    }
-
-    @PostMapping("/order")
-    public Integer[] receiveOrderFromVue(@RequestBody List<JSONObject> jsonObject){
-        Integer[] array = new Integer[jsonObject.size()];
-        for(int i=0;i<jsonObject.size();i++) {
-            Integer addIn = jsonObject.get(i).getInteger("id");
-
-            array[i] = addIn;
-        }
-        return array;
-    }
-
-    @GetMapping("/caseshow")
-    public List<Case> getCase(){
-        List<Case>  res = sbdataService.getCaseInfo();
-        //List<Map<Integer, Integer>> maxRound = sbdataService.getMaxRound();
-        int maxRound[] = {6,6,6};
-
-        for (Case re : res) {
-            int nowCaseId = re.getCaseId();
-            if (re.getCurrentRound() > maxRound[nowCaseId]) {
-                re.setIfFinished(true);
-            }
-        }
-
-        System.out.println(res.get(0));
-
-        return res;
-    }
+*/
 
 
 }

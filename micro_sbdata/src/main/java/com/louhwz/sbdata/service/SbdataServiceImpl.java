@@ -34,4 +34,11 @@ public class SbdataServiceImpl implements SbdataService{
     public List<Case> getCaseInfo() {
         return sbdataDao.getCaseInfo();
     }
+
+    @Override
+    public boolean isReady(String groupId) {
+        return true;
+
+        /*sbdataDao.getReadyInfo();*/
+    }
 }

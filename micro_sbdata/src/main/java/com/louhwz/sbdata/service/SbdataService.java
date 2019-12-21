@@ -17,4 +17,5 @@ public interface SbdataService {
 
     List<Case> getCaseInfo();
 
+    boolean isReady(String groupId);
 }

@@ -49,4 +49,10 @@
         SELECT ID,Name,Description,CaseId,CreateAt,CurrentRound
         FROM I_Experiments
     </select>
+
+    <select id="getReadyInfo" resultType="boolean" parameterType="Integer">
+        SELECT State
+        FROM I_ReadyStatus a
+        WHERE a.GroupId = groupId
+    </select>
 </mapper>
