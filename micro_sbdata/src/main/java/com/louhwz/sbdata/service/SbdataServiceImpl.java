@@ -1,6 +1,6 @@
 package com.louhwz.sbdata.service;
 
-import com.louhwz.sbdata.repository.SbdataDao;
+import com.louhwz.sbdata.repository.master.SbdataDao;
 import com.louhwz.sbdata.utils.Case;
 import com.louhwz.sbdata.utils.HotelData;
 import com.louhwz.sbdata.utils.Response;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class SbdataServiceImpl implements SbdataService{

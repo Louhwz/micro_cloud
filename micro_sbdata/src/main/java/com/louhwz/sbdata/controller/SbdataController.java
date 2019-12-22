@@ -2,6 +2,7 @@ package com.louhwz.sbdata.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.louhwz.sbdata.repository.second.SandboxDAO;
 import com.louhwz.sbdata.service.SbdataService;
 import com.louhwz.sbdata.utils.Case;
 import com.louhwz.sbdata.utils.HotelData;
@@ -39,6 +40,8 @@ public class SbdataController {
     @Autowired
     SbdataService sbdataService;
 
+    @Autowired
+    SandboxDAO sandboxDAO;
     /**
      * 测试用
      * @return
@@ -48,6 +51,10 @@ public class SbdataController {
         return "测试成功！";
     }
 
+    @GetMapping("/second")
+    public List<String> testSecond(){
+        return sandboxDAO.testSecond();
+    }
     /**
      * 与前端交互
      * @return  所有可以增改的case TODO 增加用户需要改进修改的case

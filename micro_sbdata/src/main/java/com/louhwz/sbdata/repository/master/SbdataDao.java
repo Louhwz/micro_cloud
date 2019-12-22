@@ -1,15 +1,16 @@
-package com.louhwz.sbdata.repository;
+package com.louhwz.sbdata.repository.master;
 
 import com.louhwz.sbdata.utils.Case;
 import com.louhwz.sbdata.utils.HotelData;
 import com.louhwz.sbdata.utils.Sbdata;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 
-@Mapper
+@Repository
 public interface SbdataDao {
     Sbdata getDataById(Integer id);
 
