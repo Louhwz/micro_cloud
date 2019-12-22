@@ -7,4 +7,6 @@ import java.util.List;
 @Repository
 public interface SandboxDAO {
     List<String> testSecond();
+
+    Boolean getReadyInfo(Integer groupId);
 }

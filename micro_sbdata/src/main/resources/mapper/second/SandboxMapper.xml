@@ -6,4 +6,10 @@
         SELECT role_name
         FROM ida_role
     </select>
+
+    <select id="getReadyInfo" resultType="boolean" parameterType="Integer">
+        SELECT State
+        FROM I_ReadyStatus a
+        WHERE a.GroupId = groupId
+    </select>
 </mapper>

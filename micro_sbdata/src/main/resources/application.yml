@@ -22,7 +22,7 @@ datasource:
     password: chenniao
   second:
     url: jdbc:mysql://172.16.4.236:3306/cloud_ida?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     username: root
     password: Aa112211!
     max-idle: 10

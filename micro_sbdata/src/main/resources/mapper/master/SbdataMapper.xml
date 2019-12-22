@@ -29,10 +29,25 @@
         <result property="currentRound" column="CurrentRound" />
     </resultMap>
 
+    <resultMap id="I_Groups_Data" type="com.louhwz.sbdata.utils.I_Groups">
+        <result property="groupId" column="ID" />
+        <result property="userName" column="UserName" />
+        <result property="committed" column="Committed" />
+    </resultMap>
+
+
+
     <select id="getDataById" resultMap="Sbdata-result">
         SELECT Name,Description,Number,Days
         FROM T_Customers
         where ID=#{id}
+    </select>
+
+
+    <select id="getValidCase" resultMap="I_Groups_Data" parameterType="Integer">
+        SELECT a.ID, a.UserName, a.Committed
+        FROM I_Groups a
+        WHERE a.IExpId = #{expId}
     </select>
 
     <select id="getHotelInfo" resultMap="HotelData" parameterType="Integer">
@@ -41,18 +56,15 @@
         LEFT JOIN T_Rooms b
         ON a.RoomId = b.ID
         LEFT JOIN I_RoomPricing c
-        ON c.GroupId = 42 and a.RoomId = c.RoomType
+        ON c.GroupId = #{groupId} and a.RoomId = c.RoomType
         WHERE a.GroupId = #{groupId} and Price is not NULL
     </select>
 
     <select id="getCaseInfo" resultMap="Case">
         SELECT ID,Name,Description,CaseId,CreateAt,CurrentRound
-        FROM I_Experiments
+        FROM I_Experiments a
+        WHERE a.CaseId = 1
     </select>
 
-    <select id="getReadyInfo" resultType="boolean" parameterType="Integer">
-        SELECT State
-        FROM I_ReadyStatus a
-        WHERE a.GroupId = groupId
-    </select>
+
 </mapper>

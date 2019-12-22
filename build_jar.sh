@@ -11,3 +11,8 @@ echo '.'
 
 cd micro_sbdata
 mvn clean package -DskipTests
+
+cd ..
+
+docker-compose build
+docker-compose up -d

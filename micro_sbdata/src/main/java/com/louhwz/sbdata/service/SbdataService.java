@@ -13,7 +13,7 @@ import java.util.Map;
 public interface SbdataService {
     Response getData(Integer caseId);
 
-    List<HotelData> getHotelInfo(Integer groupId);
+    List<HotelData> getHotelInfo(Integer expId);
 
     List<Case> getCaseInfo();
 

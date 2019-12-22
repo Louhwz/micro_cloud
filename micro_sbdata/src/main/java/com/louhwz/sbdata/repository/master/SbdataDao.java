@@ -2,6 +2,7 @@ package com.louhwz.sbdata.repository.master;
 
 import com.louhwz.sbdata.utils.Case;
 import com.louhwz.sbdata.utils.HotelData;
+import com.louhwz.sbdata.utils.I_Groups;
 import com.louhwz.sbdata.utils.Sbdata;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,5 +19,5 @@ public interface SbdataDao {
 
     List<Case> getCaseInfo();
 
-    Boolean getReadyInfo(Integer groupId);
+    List<I_Groups> getValidCase(Integer iExpId);
 }

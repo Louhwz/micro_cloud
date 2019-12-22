@@ -4,20 +4,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.louhwz.sbdata.repository.second.SandboxDAO;
 import com.louhwz.sbdata.service.SbdataService;
-import com.louhwz.sbdata.utils.Case;
-import com.louhwz.sbdata.utils.HotelData;
-import com.louhwz.sbdata.utils.Response;
-import com.louhwz.sbdata.utils.Sbdata;
+import com.louhwz.sbdata.utils.*;
 import com.teradata.common.bean.ResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static org.apache.http.client.methods.RequestBuilder.put;
 
@@ -81,12 +75,18 @@ public class SbdataController {
      */
     @PostMapping("/hoteldata")
     public ResponseBean getHotelData(@RequestBody JSONObject jsonObject){
-        Integer groupId = jsonObject.getInteger("groupId");
-        List<HotelData> hotelInfo = sbdataService.getHotelInfo(groupId);
+        Integer expId = jsonObject.getInteger("groupId");
 
+        List<HotelData> hotelInfo = sbdataService.getHotelInfo(expId);
+        if(hotelInfo==null){
+            List<HotelData> hotelInfo1 = new ArrayList<>();
+            return new ResponseBean(200,"no data",hotelInfo1);
+        }
         return new ResponseBean(200,"success",hotelInfo);
 
     }
+
+
 
     /**
      * 与前端交互
@@ -114,8 +114,8 @@ public class SbdataController {
     public ResponseBean isReady(String groupId){
         boolean isReady = sbdataService.isReady(groupId);
         isReady = false;
-        if(isReady){
 
+        if(isReady){
             return new ResponseBean(200,"success","");
         }
         else{
