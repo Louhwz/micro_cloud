@@ -18,4 +18,11 @@ public interface SbdataService {
     List<Case> getCaseInfo();
 
     boolean isReady(String groupId);
+
+    /**
+     * 针对前端接口的调用，返回特定groupid下的酒店订单数据供客户选择
+     * @param groupId
+     * @return
+     */
+    List<HotelData> getSpecificHotel(Integer groupId);
 }

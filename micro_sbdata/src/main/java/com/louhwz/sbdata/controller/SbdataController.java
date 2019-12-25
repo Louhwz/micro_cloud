@@ -49,6 +49,8 @@ public class SbdataController {
     public List<String> testSecond(){
         return sandboxDAO.testSecond();
     }
+
+
     /**
      * 与前端交互
      * @return  所有可以增改的case TODO 增加用户需要改进修改的case
@@ -86,7 +88,16 @@ public class SbdataController {
 
     }
 
-
+    /**
+     * 与前端交互，在order界面用户选择具体的groupid时调用这个接口
+     * @param groupId
+     * @return
+     */
+    @GetMapping("/specifichoteldata")
+    public ResponseBean getSpecificHotelData(Integer groupId){
+        List<HotelData> hotelInfo = sbdataService.getSpecificHotel(groupId);
+        return new ResponseBean(200,"success",hotelInfo);
+    }
 
     /**
      * 与前端交互
@@ -111,12 +122,30 @@ public class SbdataController {
      * @return
      */
     @GetMapping("/isready")
-    public ResponseBean isReady(String groupId){
-        boolean isReady = sbdataService.isReady(groupId);
-        isReady = false;
-
+    public ResponseBean isReady(Integer groupId){
+    /*    boolean isReady = sbdataService.isReady(groupId);
+        isReady = false;*/
+        boolean isReady = true;
         if(isReady){
-            return new ResponseBean(200,"success","");
+        //    sbdataService.getHotelOrder(groupId);
+            List<HotelOrder> listGroup = null;
+            for(int i=0;i<36;i++){
+                HotelOrder hotelOrder = new HotelOrder(42,2,1764808,490,580);
+                hotelOrder.setIRoomId(490+i);
+                if(i<=18){
+                    hotelOrder.setPrice(580);
+
+                }
+                else if(i>18 && i<=25){
+                    hotelOrder.setPrice(1200);
+
+                }
+                else{
+                    hotelOrder.setPrice(1588);
+                }
+                listGroup.add(hotelOrder);
+            }
+            return new ResponseBean(200,"success",listGroup);
         }
         else{
             return new ResponseBean(204,"Not Ready","");

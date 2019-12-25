@@ -43,6 +43,10 @@ public class SbdataServiceImpl implements SbdataService{
         return hotelData;
     }
 
+    public List<HotelData> getSpecificHotel(Integer groupId){
+        return sbdataDao.getHotelInfo(groupId);
+    }
+
     @Override
     public List<Case> getCaseInfo() {
         return sbdataDao.getCaseInfo();
@@ -50,6 +54,7 @@ public class SbdataServiceImpl implements SbdataService{
 
     @Override
     public boolean isReady(String groupId) {
+
         return true;
 
         /*sbdataDao.getReadyInfo();*/
