@@ -128,7 +128,7 @@ public class SbdataController {
         boolean isReady = true;
         if(isReady){
         //    sbdataService.getHotelOrder(groupId);
-            List<HotelOrder> listGroup = null;
+            List<HotelOrder> listGroup = new LinkedList<>();
             for(int i=0;i<36;i++){
                 HotelOrder hotelOrder = new HotelOrder(42,2,1764808,490,580);
                 hotelOrder.setIRoomId(490+i);
