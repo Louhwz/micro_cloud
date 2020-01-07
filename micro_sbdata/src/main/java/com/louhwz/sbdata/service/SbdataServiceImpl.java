@@ -43,6 +43,23 @@ public class SbdataServiceImpl implements SbdataService{
         return hotelData;
     }
 
+    /**
+     * 前端用，返回一个案例中可用group
+     * @param expId
+     * @return
+     */
+    public List<I_Groups> getGroupsInCase(Integer expId){
+        List<I_Groups> groupsInCase = sbdataDao.getValidCase(expId);
+
+        return groupsInCase;
+    }
+
+
+    /**
+     *
+     * @param groupId
+     * @return
+     */
     public List<HotelData> getSpecificHotel(Integer groupId){
         return sbdataDao.getHotelInfo(groupId);
     }

@@ -2,6 +2,7 @@ package com.louhwz.sbdata.service;
 
 import com.louhwz.sbdata.utils.Case;
 import com.louhwz.sbdata.utils.HotelData;
+import com.louhwz.sbdata.utils.I_Groups;
 import com.louhwz.sbdata.utils.Response;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface SbdataService {
      * @return
      */
     List<HotelData> getSpecificHotel(Integer groupId);
+
+    List<I_Groups> getGroupsInCase(Integer expId);
 }

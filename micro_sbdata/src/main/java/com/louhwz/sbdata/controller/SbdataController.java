@@ -89,6 +89,19 @@ public class SbdataController {
     }
 
     /**
+     * 与前端交互，参数又可叫caseId
+     * @param expId
+     * @return
+     */
+    public ResponseBean getGroupsInCase(Integer expId){
+        List<I_Groups> groupsList = sbdataService.getGroupsInCase(expId);
+/*        if(groupsList == null)
+            return new ResponseBean(200,"success","no data");
+        else
+            return new ResponseBean(200,"success",groupsList);*/
+        return new ResponseBean(200, "success", groupsList);
+    }
+    /**
      * 与前端交互，在order界面用户选择具体的groupid时调用这个接口
      * @param groupId
      * @return
@@ -163,32 +176,5 @@ public class SbdataController {
         System.out.println(groupId);
         return new ResponseBean(200,"success",groupId);
     }
-
-
-
-
-
-
-
-
-    /*
-    @PostMapping("/gsd")
-    @ResponseBody
-    public Response gsd(@RequestBody JSONObject jsonObject) {
-        int caseId = jsonObject.getIntValue("caseId");
-        System.out.println(caseId);
-        return sbdataService.getData(caseId);
-    }
-
-    @PostMapping("/gst")
-    public Sbdata gst(@RequestBody JSONObject jsonObject){
-        int caseId = jsonObject.getIntValue("caseId");
-        System.out.println(caseId);
-        System.out.println("jsonObject"+jsonObject);
-        Response rs = sbdataService.getData(caseId);
-        return rs.getData();
-    }
-*/
-
 
 }
