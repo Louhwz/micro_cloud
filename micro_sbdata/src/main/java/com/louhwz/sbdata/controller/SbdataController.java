@@ -79,6 +79,8 @@ public class SbdataController {
     public ResponseBean getHotelData(@RequestBody JSONObject jsonObject){
         Integer expId = jsonObject.getInteger("groupId");
 
+        System.out.println(jsonObject);
+
         List<HotelData> hotelInfo = sbdataService.getHotelInfo(expId);
         if(hotelInfo==null){
             List<HotelData> hotelInfo1 = new ArrayList<>();
