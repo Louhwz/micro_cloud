@@ -93,6 +93,7 @@ public class SbdataController {
      * @param expId
      * @return
      */
+    @GetMapping("/groupincase")
     public ResponseBean getGroupsInCase(Integer expId){
         List<I_Groups> groupsList = sbdataService.getGroupsInCase(expId);
 /*        if(groupsList == null)
