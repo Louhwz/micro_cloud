@@ -86,7 +86,8 @@ public class SbdataController {
             List<HotelData> hotelInfo1 = new ArrayList<>();
             return new ResponseBean(200,"no data",hotelInfo1);
         }
-        return new ResponseBean(200,"success",hotelInfo);
+        else
+            return new ResponseBean(200,"success",hotelInfo);
 
     }
 
