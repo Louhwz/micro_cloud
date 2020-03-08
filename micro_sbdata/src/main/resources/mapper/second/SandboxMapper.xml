@@ -4,11 +4,18 @@
 
 
     <resultMap id="HotelOrder" type="com.louhwz.sbdata.utils.HotelOrder">
-        <result property="groupId" column="GroupId" />
-        <result property="round" column="Round" />
-        <result property="iRoomId" column="IRoomId" />
-        <result property="price" column="Price" />
+        <result property="id"   column="id"></result>
+        <result property="expid" column="expid"/>
+        <result property="round" column="round"/>
+        <result property="customer_id" column="customer_id"/>
+        <result property="room_id" column="room_id"/>
+        <result property="price"    column="price"/>
     </resultMap>
+
+    <select id="addOrder">
+        insert into sbdata_room_orders(expid, groupid, round, customer_id, room_id, price)
+        values (#{expId}, #{groupId}, #{round}, #{iCustomerId}, #{iRoomId}, #{price})
+    </select>
 
     <select id="testSecond" resultType="String">
         SELECT role_name
@@ -21,9 +28,11 @@
         WHERE a.GroupId = groupId
     </select>
 
-    <select id="getHotelOrder" resultMap="HotelOrder" parameterType="Integer">
-        SELECT Round, ICustomerId, IRoomId, Price
-        FROM I_RoomOrders
-        WHERE GroupId = groupId;
+    <select id="getHotelOrder" resultType="com.louhwz.sbdata.utils.HotelOrder" parameterType="Integer">
+        SELECT *
+        FROM sbdata_room_orders
+        WHERE groupid = #{groupid};
     </select>
+
+
 </mapper>

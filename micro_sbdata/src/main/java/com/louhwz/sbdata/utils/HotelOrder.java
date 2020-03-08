@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class HotelOrder {
+    Integer expId;
     Integer groupId;
     Integer round;
     Integer iCustomerId;

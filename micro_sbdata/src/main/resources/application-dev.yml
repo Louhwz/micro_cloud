@@ -9,14 +9,27 @@ server:
   port: 10021
 
 spring:
-  datasource:
+  application:
+    name: micro_sbdata
+
+
+
+datasource:
+  master:
     url: jdbc:sqlserver://47.103.13.21;DatabaseName=CN_HMST_TEST
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     username: sa
     password: chenniao
-  application:
-    name: micro_sbdata
-
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.louhwz.sbdata.repository
+  second:
+    url: jdbc:mysql://localhost:3307/cloud_ida?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: yqz520
+    max-idle: 10
+    max-wait: 10000
+    min-idle: 1
+    initial-size: 5
+    validation-query: SELECT 1
+    test-on-borrow: false
+    test-while-idle: true
+    time-between-eviction-runs-millis: 300000

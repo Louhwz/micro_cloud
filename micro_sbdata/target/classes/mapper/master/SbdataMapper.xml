@@ -60,6 +60,7 @@
         WHERE a.GroupId = #{groupId} and Price is not NULL
     </select>
 
+
     <select id="getCaseInfo" resultMap="Case">
         SELECT ID,Name,Description,CaseId,CreateAt,CurrentRound
         FROM I_Experiments a
