@@ -16,7 +16,7 @@ spring:
 
 datasource:
   master:
-    url: jdbc:sqlserver://47.103.13.21;DatabaseName=cloudhotel
+    url: jdbc:sqlserver://47.103.13.21;DatabaseName=cloud_hotel
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     username: sa
     password: chenniao
