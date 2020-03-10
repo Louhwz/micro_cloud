@@ -64,11 +64,11 @@ public class SbdataController {
     public ResponseBean getCase() {
         List<Case> res = sbdataService.getCaseInfo();
         //List<Map<Integer, Integer>> maxRound = sbdataService.getMaxRound();
-        int maxRound[] = {6, 6, 6};
+        /*int maxRound[] = {6, 6, 6};*/
 
         for (Case re : res) {
             int nowCaseId = re.getCaseId();
-            if (re.getCurrentRound() > maxRound[nowCaseId]) {
+            if (re.getCurrentRound() > 6) {
                 re.setIfFinished(true);
             }
         }
