@@ -2,16 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.louhwz.sbdata.repository.second.SandboxDAO">
 
-
-    <resultMap id="HotelOrder" type="com.louhwz.sbdata.utils.HotelOrder">
-        <result property="id"   column="id"></result>
-        <result property="expid" column="expid"/>
-        <result property="round" column="round"/>
-        <result property="customer_id" column="customer_id"/>
-        <result property="room_id" column="room_id"/>
-        <result property="price"    column="price"/>
-    </resultMap>
-
     <select id="addOrder">
         insert into sbdata_room_orders(expid, groupid, round, customer_id, room_id, price)
         values (#{expId}, #{groupId}, #{round}, #{iCustomerId}, #{iRoomId}, #{price})
@@ -29,7 +19,7 @@
     </select>
 
     <select id="getHotelOrder" resultType="com.louhwz.sbdata.utils.HotelOrder" parameterType="Integer">
-        SELECT *
+        SELECT expid, groupid, round, customer_id as iCustomerId, room_id as iRoomId, price
         FROM sbdata_room_orders
         WHERE groupid = #{groupid};
     </select>
