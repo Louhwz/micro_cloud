@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 
 /**
- * 对应数据库中的I_RoomOrders表，目前ICustomerId字段硬编码
+ * 对应数据库中的I_RoomOrders表
  */
 @Data
 @AllArgsConstructor

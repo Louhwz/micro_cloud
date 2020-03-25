@@ -60,11 +60,11 @@
         WHERE a.GroupId = #{groupId} and Price is not NULL
     </select>
 
-
+    <!--#TODO:这里可以改进-->
     <select id="getCaseInfo" resultMap="Case">
         SELECT ID,Name,Description,CaseId,CreateAt,CurrentRound
         FROM I_Experiments a
-        WHERE a.CaseId = 1
+        WHERE State=1
     </select>
 
 

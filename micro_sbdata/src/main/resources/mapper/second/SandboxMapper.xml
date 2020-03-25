@@ -19,7 +19,7 @@
     </select>
 
     <select id="getHotelOrder" resultType="com.louhwz.sbdata.utils.HotelOrder" parameterType="Integer">
-        SELECT expid, groupid, round, customer_id as iCustomerId, room_id as iRoomId, price
+        SELECT expid as expId, groupid as groupId, round, customer_id as iCustomerId, room_id as iRoomId, price
         FROM sbdata_room_orders
         WHERE groupid = #{groupid};
     </select>

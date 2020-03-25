@@ -20,7 +20,6 @@
         <module>micro_register</module>
         <module>micro_test</module>
         <module>micro_sbdata</module>
-        <module>micro_python</module>
         <module>micro_sbdata_show</module>
     </modules>
 

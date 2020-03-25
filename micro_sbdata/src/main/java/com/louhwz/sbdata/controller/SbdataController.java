@@ -44,9 +44,9 @@ public class SbdataController {
      *
      * @return
      */
-    @GetMapping("/test")
-    public String test() {
-        return "测试成功！";
+    @GetMapping("/createcontainer")
+    public ResponseBean test() {
+        return new ResponseBean(200,"success","creating container...");
     }
 
     @GetMapping("/ttsec")
@@ -213,16 +213,5 @@ public class SbdataController {
         return res;
     }
 
-    /**
-     * 与沙盘后端交互
-     *
-     * @param groupId
-     * @return
-     */
-    @GetMapping("/neworder")
-    public ResponseBean newOrder(String groupId) {
-        System.out.println(groupId);
-        return new ResponseBean(200, "success", groupId);
-    }
 
 }
